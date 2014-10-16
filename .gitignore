@@ -29,3 +29,12 @@ node_modules
 
 # WebStorm files
 .idea/
+
+# Yeoman added
+node_modules
+dist
+test/temp
+.sass-cache
+app/bower_components
+.tmp
+test/bower_components/
