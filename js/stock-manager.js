@@ -10,29 +10,21 @@ function StockManager() {
 }
 
 
-StockManager.prototype.GetSnapshot = function(callback) {
-    yahooFinance.snapshot({
-        symbol: 'AAPL',
-        fields: ['s', 'n', 'd1', 'l1', 'y', 'r']
-    }, function (err, snapshot) {
+StockManager.prototype.GetSnapshot = function(json, callback) {
+
+    // Get the snapshot from the finance module
+    yahooFinance.snapshot(json, function (err, snapshot) {
         if(err) {
             callback(err, null);
         }
-
         callback(null, snapshot);
     });
 
 };
 
-StockManager.prototype.GetHistorical = function(callback) {
+StockManager.prototype.GetHistorical = function(json, callback) {
 
-    yahooFinance.historical({
-        symbol: 'AAPL',
-        from: '2012-01-01',
-        to: '2012-12-31',
-        period : 'd'
-        // period: 'd'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
-    }, function (err, quotes) {
+    yahooFinance.historical(json, function (err, quotes) {
         if(err) {
            callback(err, null);
         }
