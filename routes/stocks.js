@@ -3,10 +3,24 @@
  */
 var express = require('express');
 var router = express.Router();
+var StockManager = require('./../js/stock-manager');
 
 /* GET stocks listing. */
 router.get('/', function(req, res) {
-    res.send('respond with a resource');
+
+    // Get the results from a stockmanager
+    var stockManager = new StockManager();
+    //stockManager.GetHistorical(function (error, result) {
+    stockManager.GetSnapshot(function (error, result) {
+        if (error) {
+            res.send('respond with error: ', error);
+        }
+
+        res.send("Result is:", result);
+
+    });
+
+
 });
 
 module.exports = router;
