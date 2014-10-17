@@ -12,10 +12,10 @@ router.get('/', function(req, res) {
     var stockManager = new StockManager();
     stockManager.GetHistorical(function (error, result) {
         if (error) {
-            res.send('respond with error: ', error);
+            res.send(error);
         }
 
-        res.send("Result is:", result);
+        res.send(result);
 
     });
 
