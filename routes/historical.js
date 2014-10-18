@@ -33,6 +33,31 @@ router.get('/', function(req, res) {
 
 });
 
+/* EXAMPLE POST MESSAGE FOR TESTING THE HISTORICAL POST API
+ {
+ "symbol" : "GOOGL",
+ "from" : "2014-10-01",
+ "to" : "2014-10-03",
+ "period" : "d"
+ }
+ */
+
+/* POST stocks listing */
+router.post('/', function(req, res) {
+
+    // Create a new stock manager
+    var stockManager = new StockManager();
+
+    // Then, send it for processing
+    stockManager.GetHistorical(req.body, function HistoricalCallback(error, result) {
+        if(error) {
+            res.send(error);
+        }
+        // Otherwise
+        res.send(result);
+    });
+});
+
 /* GET Historical listing by ID */
 router.get('/:id', function(req, res) {
 

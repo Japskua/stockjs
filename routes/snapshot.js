@@ -47,6 +47,28 @@ router.get('/:id', function(req, res) {
 
 });
 
+/* Example of POST data for testing the API
+ {
+ "symbol" : "GOOGL",
+ "fields" : ["s", "n", "d1", "l1", "y", "r"]
+ }
+ 
+ */
+/* POST stocks listing */
+router.post('/', function(req, res) {
+
+    // Create a new stock manager
+    var stockManager = new StockManager();
+
+    // Then, send it for processing
+    stockManager.GetSnapshot(req.body, function SnapshotCallback(error, result) {
+        if(error) {
+            res.send(error);
+        }
+        // Otherwise
+        res.send(result);
+    });
+});
 
 
 module.exports = router;
