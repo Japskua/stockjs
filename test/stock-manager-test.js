@@ -37,4 +37,35 @@ describe("Testing stock-manager.js for its functions", function() {
 
     });
 
+    describe("Checking for the historical data", function() {
+        it("Should get historical data of apple stock", function(done) {
+
+            var stockManager = new StockManager();
+
+            var json = {
+                symbol: 'AAPL',
+                from: '2012-01-01',
+                to: '2012-12-31',
+                period : 'd'
+                // period: 'd'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
+            };
+
+            stockManager.GetHistorical(json, function(err, result) {
+                if(err) {
+                    throw err;
+                }
+
+                // Things should be okay
+                result.should.not.be.empty;
+                result[0].open.should.be.number;
+                result[0].high.should.be.number;
+                result[0].low.should.be.number;
+                result[0].close.should.be.number;
+
+                // Works!
+                done();
+            });
+        });
+    });
+
 });
