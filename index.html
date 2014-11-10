@@ -9,49 +9,6 @@
 
 
 
-<div class="container">
-    <h1>Stock Container</h1>
-
-    <div class="page">
-
-    </div>
-</div>
-
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/underscore/underscore-min.js"></script>
-<script src="bower_components/backbone/backbone.js"></script>
-<script type="text/javascript">
-
-    var Stocks = Backbone.Collection.extend({
-        url : '/stocks/historical'
-    });
-
-    var StockListing = Backbone.View.extend({
-        el : '.page',
-        render : function() {
-            this.$el.html('!Content should show here!');
-        }
-
-
-    });
-
-    var Router = Backbone.Router.extend({
-        routes : {
-            '' : 'home'
-        }
-    });
-
-    var stockListing = new StockListing();
-
-
-    var router = new Router();
-    router.on('route:home', function() {
-        stockListing.render();
-    });
-
-    // Start listening to the URL
-    Backbone.history.start();
-</script>
 
 </body>
 </html>
