@@ -1,7 +1,10 @@
 /**
  * Created by Janne on 10.11.2014.
  */
-define(['backbone','views/home'], function (Backbone, HomeView) {
+define(['backbone',
+        'views/home',
+        'views/historical'],
+    function (Backbone, HomeView) {
 
         return Backbone.Router.extend({
             routes: {
