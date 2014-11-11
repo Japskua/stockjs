@@ -4,11 +4,12 @@
 define(['backbone',
         'views/home',
         'views/historical'],
-    function (Backbone, HomeView) {
+    function (Backbone, HomeView, HistoricalView) {
 
         return Backbone.Router.extend({
             routes: {
-                "": "home"
+                "": "home",
+                "history" : "history"
             },
             initialize: function() {
                 //this.headerView = new HeaderView();
@@ -22,6 +23,12 @@ define(['backbone',
                     this.homeView = new HomeView();
                 }
                 $('#my-content').html(this.homeView.render().el)
+            },
+            history: function() {
+                if(!this.historicalView) {
+                    this.historicalView = new HistoricalView();
+                }
+                $('#my-content').html(this.historicalView.render().el)
             }
         });
     });

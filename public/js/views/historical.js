@@ -1,7 +1,6 @@
 /**
  * Created by Janne on 10.11.2014.
  */
-
 define(['backbone',
         'bootstrap',
         'text!templates/historical.html'],
